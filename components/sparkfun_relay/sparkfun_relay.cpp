@@ -7,7 +7,7 @@ namespace sparkfun_relay {
 static const char *TAG = "sparkfun_relay";
 
 // Implementation of the vendor code.
-SparkFun_Qwiic_Relay::SparkFun_Qwiic_Relay() : _address(0), _port(I2C_NUM_0) {}
+SparkFun_Qwiic_Relay::SparkFun_Qwiic_Relay() : _address(0), _port(I2C_NUM_1) {}
 
 bool SparkFun_Qwiic_Relay::begin(uint8_t address, i2c_port_t port) {
   _address = address;
@@ -31,7 +31,7 @@ void SparkFun_Qwiic_Relay::relayOff() {
 
 // Implementation of the external component.
 void SparkFunRelaySwitch::setup() {
-  if (!relay_.begin(0x18, I2C_NUM_0)) {
+  if (!relay_.begin(0x18, I2C_NUM_1)) {
     ESP_LOGE(TAG, "Failed to initialize SparkFun Qwiic Relay");
   } else {
     ESP_LOGI(TAG, "SparkFun Qwiic Relay initialized successfully");
